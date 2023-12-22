@@ -3,6 +3,7 @@ package com.example.photos.component
 import androidx.compose.foundation.BorderStroke
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxWidth
+import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.material3.Button
 import androidx.compose.material3.ButtonDefaults
@@ -20,7 +21,7 @@ import com.example.photos.ui.theme.PhotosTheme
 @Composable
 fun FilledButton(label: String, modifier: Modifier = Modifier, onClick: () -> Unit) {
     Button(
-        modifier = modifier.fillMaxWidth(0.6f),
+        modifier = modifier.fillMaxWidth().padding(horizontal = 8.dp),
         onClick = { onClick() },
         shape = RoundedCornerShape(8.dp),
         colors = ButtonDefaults.buttonColors(

@@ -1,4 +1,4 @@
-package com.example.photos.feature.dynamic_image_pick
+package com.example.photos.feature.image_pick
 
 import android.net.Uri
 import androidx.compose.runtime.getValue
@@ -7,15 +7,15 @@ import androidx.compose.runtime.setValue
 import androidx.lifecycle.ViewModel
 
 
-class DynamicImageViewModel : ViewModel() {
-    var size by mutableStateOf("1")
+class ImageViewModel : ViewModel() {
+    var size by mutableStateOf("")
     var imageList by mutableStateOf<List<Uri>?>(null)
     var indexes by mutableStateOf<Set<Int>?>(null)
 
 
-    fun onEvent(event: DynamicImageEvent) {
+    fun onEvent(event: ImageEvent) {
         when (event) {
-            is DynamicImageEvent.EventOnImagePick -> {
+            is ImageEvent.EventOnImagePick -> {
                 val list = mutableListOf<Uri>()
                 val indices = mutableSetOf<Int>()
                 for (i in 1..size.toInt()) {
@@ -36,8 +36,13 @@ class DynamicImageViewModel : ViewModel() {
                 imageList = list
             }
 
-            is DynamicImageEvent.EventOnSizeChanged -> {
+            is ImageEvent.EventOnSizeChanged -> {
                 size = event.size
+            }
+            is ImageEvent.EventOnClearSize -> {
+                size = ""
+                indexes=null
+                imageList=null
             }
 
             else -> {}

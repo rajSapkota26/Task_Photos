@@ -7,11 +7,9 @@ import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
-import com.example.photos.feature.dynamic_image_pick.DynamicImageScreen
-import com.example.photos.feature.dynamic_image_pick.DynamicImageViewModel
+import com.example.photos.feature.image_pick.ImageScreen
+import com.example.photos.feature.image_pick.ImageViewModel
 import com.example.photos.feature.home.HomeScreen
-import com.example.photos.feature.static_image_pick.ImageScreen
-import com.example.photos.feature.static_image_pick.StaticImageViewModel
 
 
 @Composable
@@ -30,22 +28,12 @@ fun NavGraphNew(
             HomeScreen(navController)
 
         }
-        composable(Screen.StaticImage.route)
-        {
-            val viewModel = ViewModelProvider.AndroidViewModelFactory(applicationContext)
-                .create(StaticImageViewModel::class.java)
 
-            ImageScreen(
-                navController = navController,
-                viewModel = viewModel,
-                onEvent = viewModel::onEvent
-            )
-        }
-        composable(Screen.DynamicImage.route)
+        composable(Screen.ImageViewerScreen.route)
         {
             val viewModel = ViewModelProvider.AndroidViewModelFactory(applicationContext)
-                .create(DynamicImageViewModel::class.java)
-            DynamicImageScreen(
+                .create(ImageViewModel::class.java)
+            ImageScreen(
                 navController = navController,
                 viewModel = viewModel,
                 onEvent = viewModel::onEvent

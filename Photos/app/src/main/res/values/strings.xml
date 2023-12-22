@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">Photos</string>
+    <string name="description">This spp showing image in triangle shape if you select two images from gallery then you show first image in triangle sequence and all images shown in triangle shape with its index numbers </string>
 </resources>
