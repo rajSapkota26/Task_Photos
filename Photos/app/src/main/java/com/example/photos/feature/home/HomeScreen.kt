@@ -19,13 +19,16 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.style.TextAlign
+import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import com.example.photos.R
 import com.example.photos.component.FilledButton
 import com.example.photos.component.TopBar
 import com.example.photos.navGraph.Screen
+import com.example.photos.ui.theme.PhotosTheme
 
 @Composable
 fun HomeScreen(navController: NavHostController) {
@@ -43,9 +46,11 @@ fun HomeScreen(navController: NavHostController) {
         ) {
         Card(
             modifier = Modifier
-                .fillMaxWidth().padding(4.dp)
-                .border( 1.dp,
-                  Color.Green,
+                .fillMaxWidth()
+                .padding(4.dp)
+                .border(
+                    1.dp,
+                    Color.Green,
                     RoundedCornerShape(4.dp)
                 ),
             elevation = CardDefaults.cardElevation(
@@ -57,7 +62,8 @@ fun HomeScreen(navController: NavHostController) {
         ) {
             Column(
                 modifier = Modifier
-                    .wrapContentSize().padding(4.dp),
+                    .wrapContentSize()
+                    .padding(4.dp),
                 horizontalAlignment = Alignment.CenterHorizontally,
                 verticalArrangement = Arrangement.Center
             ) {
@@ -80,5 +86,13 @@ fun HomeScreen(navController: NavHostController) {
             }
         }
         }
+    }
+}
+
+@Preview(showBackground = true)
+@Composable
+fun GreetingPreview() {
+    PhotosTheme {
+HomeScreen(navController = rememberNavController())
     }
 }

@@ -1,5 +1,6 @@
 package com.example.photos.feature.image_pick
 
+import android.app.Application
 import android.content.Context
 import android.net.Uri
 import android.util.Log
@@ -45,7 +46,9 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.constraintlayout.compose.ConstraintLayout
 import androidx.core.text.isDigitsOnly
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.NavHostController
+import androidx.navigation.compose.rememberNavController
 import coil.compose.AsyncImage
 import com.example.photos.component.FilledButton
 import com.example.photos.component.OutlinedTextFieldCompo
@@ -123,7 +126,10 @@ fun ScaffoldScreen(
                 if (viewModel.imageList != null) {
                     FilledButton(
                         label = "Clear ",
-                        modifier = Modifier.fillMaxWidth().padding(horizontal = 8.dp).align(Alignment.BottomCenter),
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(horizontal = 8.dp)
+                            .align(Alignment.BottomCenter),
                     ) {
                         onEvent(ImageEvent.EventOnClearSize)
                     }
@@ -308,10 +314,3 @@ fun InitDependency(context: Context) {
 }
 
 
-@Preview(showBackground = true)
-@Composable
-fun GreetingPreview() {
-    PhotosTheme {
-
-    }
-}
